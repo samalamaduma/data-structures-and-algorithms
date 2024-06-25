@@ -1,0 +1,6 @@
+m, n = map(int, input().split())
+total = 0
+for i in range(m):
+    lst = list(map(int, input().split()))
+    total += sum(lst)
+print(total)

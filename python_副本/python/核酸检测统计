@@ -1,0 +1,40 @@
+from collections import defaultdict
+n = int(input())
+m = int(input())
+depnum = defaultdict(int)
+depfail = defaultdict(int)
+stu = {}
+for i in range(n):
+    id, dep = input().split()
+    stu[id] = dep
+    depnum[dep] += 1
+studo = defaultdict(list)
+for i in range(m):
+    day, stunum = input().split()
+    day = int(day)
+    studo[stunum].append(day)
+stus = list(stu.keys())
+fail = 0
+for x in stus:
+    temp = studo[x]
+    temp.sort()
+    l = len(temp)
+    temp.append(10)
+    if temp[0] != 1:
+        depfail[stu[x]] += 1
+        fail += 1
+    else:
+        for i in range(l):
+            if temp[i + 1] - temp[i] > 3:
+                depfail[stu[x]] += 1
+                fail += 1
+                break
+deps = list(depnum.keys())
+depmost = deps[0]
+ratio = 0
+for x in deps:
+    if depfail[x] / depnum[x] > ratio:
+        ratio = depfail[x] / depnum[x]
+        depmost = x
+print(fail)
+print(depmost)

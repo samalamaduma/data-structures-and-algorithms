@@ -1,0 +1,23 @@
+import heapq
+
+def min_energy_cost(n, piles):
+    total_cost = 0
+    heapq.heapify(piles)  # 将果子堆转换为优先队列
+
+    # 贪心算法：每次选择两堆果子数量最小的进行合并
+    while len(piles) > 1:
+        min1 = heapq.heappop(piles)
+        min2 = heapq.heappop(piles)
+        merged_pile = min1 + min2
+        total_cost += merged_pile
+        heapq.heappush(piles, merged_pile)
+
+    return total_cost
+
+# 输入处理
+n = int(input())
+piles = list(map(int, input().split()))
+
+# 计算最小体力耗费值并输出
+result = min_energy_cost(n, piles)
+print(result)

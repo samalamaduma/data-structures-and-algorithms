@@ -1,0 +1,25 @@
+from collections import defaultdict
+import heapq
+
+k = int(input())
+n = int(input())
+r = int(input())
+roads = defaultdict(list)
+
+for _ in range(r):
+    s, d, l, t = map(int, input().split())
+    roads[s].append((d, l, t))
+
+pq = []
+pq.append((0, 0, 1))
+ans = -1
+while pq:
+    distance, money, location = heapq.heappop(pq)
+    if location == n and money <= k:
+        ans = distance
+        break
+    for d, l, t in roads[location]:
+        tempd, tempm, templ = distance + l, money + t, d
+        if tempm <= k:
+            heapq.heappush(pq, (tempd, tempm, templ))
+print(ans)

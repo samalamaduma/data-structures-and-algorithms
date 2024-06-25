@@ -1,0 +1,33 @@
+m, n = map(int, input().split(","))
+primelist = [2]
+blist = [True] * (n + 1)
+alist = []
+for k in range(3, n + 1, 2):
+    if blist[k]:
+        primelist.append(k)
+        for t in range(2 * k, n + 1, k):
+            blist[t] = False
+for i in range(n + 1):
+    alist.append(0)
+for i in range(len(primelist)):
+    alist[primelist[i]] = 1
+l = len(alist)
+output = []
+if m > 2:
+    for i in range(m, l - 3):
+        if alist[i] == alist[i + 2] == 1:
+            output.append(i)
+            print("({},{})".format(i, i + 2))
+    if output == []:
+            print("NULL")
+if m <= 2:
+    for i in range(l - 3):
+        if alist[i] == alist[i + 2] == 1:
+            print("({},{})".format(2, i + 2))
+    for i in range(l - 3):
+        if alist[i] == alist[i + 2] == 1:
+            print("({},{})".format(i, i + 2))
+            output.append(i)
+    if output == []:
+        print("NUll")
+        

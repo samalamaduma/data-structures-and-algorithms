@@ -1,0 +1,11 @@
+m, n = map(int, input().split())
+lst = input().split()
+q = []
+ans = 0
+for x in lst:
+    if x not in q:
+        q.append(x)
+        ans += 1
+    if len(q) > m:
+        del q[0]
+print(ans)

@@ -1,0 +1,9 @@
+code = [5,6,7,8,9,0,1,2,3,4]
+alist = list(map(int, input().split()))
+blist = list(map(int, input().split()))
+l1 = len(alist)
+l2 = len(blist)
+ans1 = [code[alist[i]] for i in range(l1)]
+ans2 = [code[blist[i]] for i in range(l2)]
+print(*ans1)
+print(*ans2)

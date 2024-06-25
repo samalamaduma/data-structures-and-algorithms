@@ -1,0 +1,23 @@
+from collections import deque
+
+lst = []
+m, n = map(int, input().split())
+for _ in range(m):
+    lst.append(list(map(int, input().split())))
+loc = deque()
+loc.append((0, 0, 0))
+directions = [(0, 1), (0, -1), (-1, 0), (1, 0)]
+if lst[0][0] == 1:
+    print(0)
+    exit()
+while loc:
+    x, y, s = loc.popleft()
+    for dx, dy in directions:
+        nx, ny = x + dx, y + dy
+        if 0 <= nx < m and 0 <= ny < n and lst[nx][ny] != 2:
+            if lst[nx][ny] == 1:
+                print(s + 1)
+                exit()
+            loc.append((nx, ny, s + 1))
+            lst[nx][ny] = 2
+print("NO")

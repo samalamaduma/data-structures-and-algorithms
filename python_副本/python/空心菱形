@@ -1,0 +1,12 @@
+def func(a,b):
+    return(" " * (a - b) + "*" + " " * (2 * b - 3) + "*")
+s = int(input())
+if s > 1:
+    print(" " * ( s - 1 ) + "*")
+    for i in range(2, s+1):
+        print(func(s,i))
+    for i in range(2, s):
+        print(func(s,s+1-i))
+    print(" " * (s - 1) + "*")
+else:
+    print("*")

@@ -1,0 +1,38 @@
+def find(x, lst):
+    if lst[x] == x:
+        return x
+    else:
+        if lst[x] < 0:
+            result = -find(-lst[x], lst)
+            lst[x] = result
+            return result
+        else:
+            result = find(lst[x], lst)
+            lst[x] = result
+            return result
+
+def notsame(i, j, lst):
+    iloc = find(i, lst)
+    jloc = find(j, lst)
+    if iloc > 0:
+        lst[iloc] = -jloc
+    else:
+        lst[-iloc] = jloc
+
+t = int(input())
+for k in range(t):
+    n, m = map(int, input().split())
+    lst = [l for l in range(n + 1)]
+    for i in range(m):
+        temp = input().split()
+        temp1 = int(temp[1])
+        temp2 = int(temp[2])
+        if temp[0] == "A":
+            if abs(find(temp1, lst)) != abs(find(temp2, lst)):
+                print("Not sure yet.")
+            elif find(temp1, lst) == find(temp2, lst):
+                print("In the same gang.")
+            else:
+                print("In different gangs.")
+        if temp[0] == "D":
+            notsame(temp1, temp2, lst)

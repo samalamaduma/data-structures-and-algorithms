@@ -1,0 +1,25 @@
+def move(x, y, n, m, visited):
+    return 0 <= x < n and 0 <= y < m and not visited[x][y]
+
+def dfs(x, y, n, m, visited, moves):
+    visited[x][y] = True
+    moves += 1
+    if moves == n * m:
+        return 1
+    else:
+        paths = 0
+        direct = [(-1, -2), (-2, -1), (1, 2), (2, 1), (1, -2), (-1, 2), (2, -1), (-2, 1)]
+        for dx, dy in direct:
+            if move(x + dx, y + dy, n, m, visited):
+                movesnow = moves
+                paths += dfs(x + dx, y + dy, n, m, visited, moves)
+                visited[x + dx][y + dy] = False
+                moves = movesnow
+        return paths
+
+t = int(input())
+for i in range(t):
+    moves = 0
+    n, m, x, y = map(int, input().split())
+    visited = [[False] * m for i in range(n)]
+    print(dfs(x, y, n, m, visited,moves))

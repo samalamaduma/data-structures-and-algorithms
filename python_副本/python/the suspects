@@ -1,0 +1,32 @@
+# pylint: skip-file
+from collections import defaultdict
+import sys
+sys.setrecursionlimit(100000000)
+
+def dfs(x):
+    global ans
+    if x not in visited:
+        ans += 1
+        visited.add(x)
+        for g in group[x]:
+            for s in student[g]:
+                dfs(s)
+
+while True:
+    group = defaultdict(list)
+    student = defaultdict(list)
+    visited = set()
+    ans = 0
+    groupn = 0
+    n, m = map(int, input().split())
+    if n == 0:
+        exit()
+    for _ in range(m):
+        temp = input().split()
+        temp = temp[1:]
+        for x in temp:
+            group[x].append(groupn)
+            student[groupn].append(x)
+        groupn += 1
+    dfs("0")
+    print(ans)

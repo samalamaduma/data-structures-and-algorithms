@@ -1,0 +1,10 @@
+v, n = map(int, input().split())
+vlist = list(map(int, input().split()))
+vlist.sort(reverse = True)
+temp = [0]
+for i in range(n):
+    l = len(temp)
+    for j in range(l):
+        if temp[j] + vlist[i] <= v:
+            temp.append(temp[j] + vlist[i])
+print(v - max(temp))

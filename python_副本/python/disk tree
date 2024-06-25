@@ -1,0 +1,14 @@
+from collections import defaultdict
+
+class node:
+    def __init__(self, name):
+        self.name = name
+        self.children = defaultdict(dict)
+
+all = defaultdict
+n = int(input())
+for _ in range(n):
+    temp = input().split("\\")
+    l = len(temp)
+    if l == 1:
+        all.children

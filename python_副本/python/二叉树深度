@@ -1,0 +1,12 @@
+n = int(input())
+depth = [1 for i in range(n)]
+temp = [1]
+for i in temp:
+    l, r = map(int, input().split())
+    if l != -1:
+        depth[l - 1] = depth[i - 1] + 1
+        temp.append(l)
+    if r != -1:
+        depth[r - 1] = depth[i - 1] + 1
+        temp.append(r)
+print(max(depth))

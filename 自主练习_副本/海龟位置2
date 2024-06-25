@@ -1,0 +1,10 @@
+import math
+alist = input().split()
+theta = 0; x = 0; y = 0
+n = int(len(alist)/2)
+for i in range(n):
+    theta = theta + int(alist[2*i])
+    x = x + int(alist[2 * i + 1]) * math.cos(theta / 180 * math.pi)
+    y = y + int(alist[2 * i + 1]) * math.sin(theta / 180 * math.pi)
+d = math.sqrt(x**2 + y**2)
+print("%.4f" % d)

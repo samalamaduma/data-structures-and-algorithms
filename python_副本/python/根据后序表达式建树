@@ -1,0 +1,30 @@
+class treenode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def build(chars):
+    stack = []
+    for x in chars:
+        temp = treenode(x)
+        if x.isupper():
+            temp.right = stack.pop()
+            temp.left = stack.pop()
+        stack.append(temp)
+    return stack[0]
+
+n = int(input())
+for i in range(n):
+    chars = input()
+    root = build(chars)
+    lst = [root]
+    for x in lst:
+        if x.left != None:
+            lst.append(x.left)
+        if x.right != None:
+            lst.append(x.right)
+    l = len(chars)
+    for i in range(l):
+        print(lst[-i - 1].value, end = "")
+    print()

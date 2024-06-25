@@ -1,0 +1,37 @@
+import heapq
+def dij(jail, x1, y1, x2, y2, n, m):
+    stack = []
+    heapq.heappush(stack, (0, x1, y1))
+    dir = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+    times = [[float("inf")] * m for i in range(n)]
+    while stack:
+        time, x, y = heapq.heappop(stack)
+        if x == x2 and y == y2:
+            print(time)
+            return
+        for dx, dy in dir:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < n and 0 <= ny < m and jail[nx][ny] != "#":
+                if jail[nx][ny] == "x":
+                    temptime = time + 2
+                else:
+                    temptime = time + 1
+                if temptime < times[nx][ny]:
+                    times[nx][ny] = temptime
+                    heapq.heappush(stack, (temptime, nx, ny))
+    print("Impossible")
+
+n = int(input())
+for _ in range(n):
+    n, m = map(int, input().split())
+    jail = []
+    for i in range(n):
+        temp = input()
+        if "r" in temp:
+            x1 = i
+            y1 = temp.index("r")
+        if "a" in temp:
+            x2 = i
+            y2 = temp.index("a")
+        jail.append(temp)
+    dij(jail, x1, y1, x2, y2, n, m)

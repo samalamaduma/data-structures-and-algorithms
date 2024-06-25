@@ -1,0 +1,7 @@
+n = int(input())
+for i in range(n):
+    x = input()
+    if x != "z" and x != "Z":
+        print(chr(ord(x) + 1))
+    else:
+        print(" ")

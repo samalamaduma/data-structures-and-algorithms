@@ -1,0 +1,57 @@
+daynumb =[0 for i in range(2000)] + [365 for i in range(2000, 10000)]
+for i in range(2000, 10000):
+    if i % 400 == 0:
+        daynumb[i] = 366
+    elif i % 400 != 0 and i % 100 == 0:
+        daynumb[i] = 365
+    elif i % 400 != 0 and i % 100 != 0 and i % 4 == 0:
+        daynumb[i] = 366
+month1 = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+month2 = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+def f(day):
+    mod7 = day % 7
+    if mod7 == 0:
+        whichday = "Saturday"
+    if mod7 == 1:
+        whichday = "Sunday"
+    if mod7 == 2:
+        whichday = "Monday"
+    if mod7 == 3:
+        whichday = "Tuesday"
+    if mod7 == 4:
+        whichday = "Wednesday"
+    if mod7 == 5:
+        whichday = "Thursday"
+    if mod7 == 6:
+        whichday = "Friday"
+    day += 1
+    temp = 2000
+    while day - daynumb[temp] > 0:
+        day -= daynumb[temp]
+        temp += 1
+    year = temp
+    if daynumb[year] == 365:
+        i = 0
+        while day - month1[i] > 0:
+            day -= month1[i]
+            i += 1
+        month = i + 1
+        if len(str(month)) < 2:
+            month = "0" + str(month)
+    elif daynumb[year] == 366:
+        i = 0
+        while day - month2[i] > 0:
+            day -= month2[i]
+            i += 1
+        month = i + 1
+        if len(str(month)) < 2:
+            month = "0" + str(month)
+    if len(str(day)) < 2:
+        day = "0" + str(day)
+    print("{}-{}-{} {}".format(year, month, day, whichday))
+while True:
+    day = int(input())
+    if day == -1:
+        exit()
+    else:
+        f(day)

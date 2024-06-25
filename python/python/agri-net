@@ -1,0 +1,28 @@
+import heapq
+
+while True:
+    try:
+        n = int(input())
+        graph = [list(map(int, input().split())) for i in range(n)]
+        visited = set()
+        visited.add(0)
+        edges = []
+        distance = {}
+        fiber = 0
+        for i in range(1, n):
+            heapq.heappush(edges, (graph[0][i], i))
+            distance[i] = graph[0][i]
+        while len(visited) < n:
+            length, v = heapq.heappop(edges)
+            if v in visited:
+                continue
+            fiber += length
+            visited.add(v)
+            for i in range(n):
+                if i not in visited:
+                    if graph[v][i] < distance[i]:
+                        distance[i] = graph[v][i]
+                        heapq.heappush(edges, (graph[v][i], i))
+        print(fiber)
+    except EOFError:
+        break

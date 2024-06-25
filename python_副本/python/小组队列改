@@ -1,0 +1,37 @@
+from collections import defaultdict
+t = int(input())
+dic = defaultdict(lambda: -1)
+group = []
+for i in range(t):
+    for x in input().split():
+        group.append(x)
+        dic[x] = i
+q = []
+outsider = -1
+while True:
+    oper = input().split()
+    if oper[0] == "STOP":
+        break
+    else:
+        if oper[0] == "ENQUEUE":
+            check = 0
+            while True:
+                if dic[oper[1]] == -1:
+                    q.append([outsider, oper[1]])
+                    outsider -= 1
+                    break
+                elif check >= len(q):
+                    q.append([dic[oper[1]], oper[1]])
+                    break
+                else:
+                    if q[check][0] == dic[oper[1]]:
+                        q[check].append(oper[1])
+                        break
+                    else:
+                        check += 1
+        if oper[0] == "DEQUEUE":
+            if len(q[0]) > 2:
+                print(q[0].pop(1))
+            else:
+                print(q[0][1])
+                del q[0]

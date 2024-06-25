@@ -1,0 +1,18 @@
+def f(m, alist):
+    temp = (m - 1) % len(alist)
+    while len(alist) > 1:
+        if alist[temp][0] == 1:
+            del alist[temp]
+            temp = int((temp - 1 + m) % len(alist))
+        if alist[temp][0] > 1:
+            alist[temp][0] -= 1
+            temp = int((temp + m) % len(alist))
+    print(alist[0][1])
+while True:
+    n, m = map(int,input().split())
+    if n == 0 and m == 0:
+        exit()
+    else:
+        blist = list(map(int, input().split()))
+        alist = [[blist[i], i + 1] for i in range(len(blist))]
+        f(m, alist)

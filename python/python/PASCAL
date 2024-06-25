@@ -1,0 +1,7 @@
+n, s = map(int, input().split())
+alist = list(map(int, input().split()))
+blist = list(map(int, input().split()))
+temp1 = [alist[i] - i * s for i in range(n)]
+temp2 = [min(temp1[0:i + 1]) + i * s for i in range(n)]
+answer = [blist[i] * temp2[i] for i in range(n)]
+print(sum(answer))

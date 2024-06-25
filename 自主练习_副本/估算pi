@@ -1,0 +1,8 @@
+from math import sqrt
+t = int(input())
+def pi(t):
+    a = 2
+    for k in range(1, t-1):
+        a = 2 + sqrt(a)
+    return (2 ** t * sqrt(2 - sqrt(a)))
+print("%.8f" % pi(t))

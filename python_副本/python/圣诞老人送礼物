@@ -1,0 +1,15 @@
+m, n = map(int,input().split())
+lst = []
+for i in range(m):
+    lst.append(tuple(map(int, input().split())))
+lst.sort(key = lambda x: x[0] / x[1], reverse = True)
+wei = n
+total = 0
+for i in range(m):
+    if 0 <= wei < lst[i][1]:
+        total += lst[i][0] / lst[i][1] * wei
+        wei = 0
+    if wei >= lst[i][1]:
+        total += lst[i][0]
+        wei -= lst[i][1]
+print("%.1f" % total)

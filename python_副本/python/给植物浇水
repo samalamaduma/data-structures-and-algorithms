@@ -1,0 +1,24 @@
+n, a, b = map(int, input().split())
+plants = list(map(int, input().split()))
+alice = 0
+bob = n - 1
+wata = a
+watb = b
+fill = 0
+while alice < bob:
+    if wata >= plants[alice]:
+        wata -= plants[alice]
+    else:
+        wata = a - plants[alice]
+        fill += 1
+    if watb >= plants[bob]:
+        watb -= plants[bob]
+    else:
+        watb = b - plants[bob]
+        fill += 1
+    alice += 1
+    bob -= 1
+if alice == bob:
+    if max(wata, watb) < plants[alice]:
+        fill += 1
+print(fill)

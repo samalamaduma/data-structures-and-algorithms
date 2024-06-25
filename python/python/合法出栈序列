@@ -1,0 +1,28 @@
+def is_feasible(origin, output):
+    left = list(origin[1:])
+    outleft = list(output)
+    stack = [origin[0]]
+    answer = "YES"
+    if len(origin) != len(output):
+        return("NO")
+    while True:
+        while len(stack) > 0 and outleft[0] == stack[0]:
+            del outleft[0]
+            del stack[0]
+        while len(left) > 0 and (len(stack) == 0 or outleft[0] != stack[0]):
+            stack.insert(0, left[0])
+            del left[0]
+        if len(outleft) > 0 and outleft[0] != stack[0] and len(left) == 0:
+            answer = "NO"
+            break
+        if len(outleft) == 0:
+            break
+    return answer
+
+origin = input()
+while True:
+    try:
+        output = input()
+        print(is_feasible(origin, output))
+    except EOFError:
+        break

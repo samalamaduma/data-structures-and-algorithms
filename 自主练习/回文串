@@ -1,0 +1,8 @@
+str = input()
+alist = list(str)
+blist = list(str)
+alist.reverse()
+if alist == blist:
+    print(1)
+else:
+    print(0)

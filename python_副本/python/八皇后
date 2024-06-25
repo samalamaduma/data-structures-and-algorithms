@@ -1,0 +1,25 @@
+def safe(board, row, col):
+    for i in range(row):
+        if board[i] - i == col - row or board[i] + i == col + row or board[i] == col:
+            return False
+    return True
+
+def queen(board, row, sol):
+    if row == 8:
+        sol.append("".join(map(str, [x + 1 for x in board])))
+    else:
+        for i in range(8):
+            if safe(board, row, i):
+                board[row] = i
+                queen(board, row + 1, sol)
+                board[row] = 0
+
+sol = []
+board = [0] * 8
+row = 0
+queen(board, row, sol)
+
+n = int(input())
+for i in range(n):
+    t = int(input())
+    print(sol[t - 1])

@@ -1,0 +1,31 @@
+def dfs(graph, vertex, visited, weights):
+    visited[vertex] = True
+    total_weight = weights[vertex]
+
+    for neighbor in graph[vertex]:
+        if not visited[neighbor]:
+            total_weight += dfs(graph, neighbor, visited, weights)
+    
+    return total_weight
+
+def max_connected_weight(graph, weights):
+    n = len(graph)
+    visited = [False] * n
+    max_weight = 0
+
+    for vertex in range(n):
+        if not visited[vertex]:
+            connected_weight = dfs(graph, vertex, visited, weights)
+            max_weight = max(max_weight, connected_weight)
+    
+    return max_weight
+
+n, m = map(int, input().split())
+weights = list(map(int, input().split()))
+
+graph = [[] for _ in range(n)]
+for i in range(m):
+    u, v = map(int, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+print(max_connected_weight(graph, weights))

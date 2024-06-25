@@ -1,0 +1,45 @@
+class node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def insert(root, node):
+    if node.value < root.value:
+        if not root.left:
+            root.left = node
+        else:
+            insert(root.left, node)
+    else:
+        if not root.right:
+            root.right = node
+        else:
+            insert(root.right, node)
+
+def preo(root):
+    temp1 = []
+    temp2 = []
+    if root.left:
+        temp1 = preo(root.left)
+    if root.right:
+        temp2 = preo(root.right)
+    return [root.value] + temp1 + temp2
+
+while True:
+    layers = []
+    while True:
+        temp = list(input())
+        if temp == ["*"]:
+            break
+        if temp == ["$"]:
+            break
+        else:
+            layers.append(temp)
+    l = len(layers)
+    root = node(layers[-1][0])
+    for i in range(2, l + 1):
+        for x in layers[-i]:
+            insert(root, node(x))
+    print("".join(preo(root)))
+    if temp[0] == "$":
+        exit()

@@ -1,0 +1,6 @@
+alist = input().split()
+k = len(alist)
+while k > 1:
+    print(alist[k-1], end = " ")
+    k = k-1
+print(alist[0])

@@ -1,0 +1,15 @@
+n = int(input())
+for i in range(n):
+    exp = list(input().split())
+    l = len(exp)
+    stack = []
+    while len(exp) > 0:
+        if exp[0][0].isnumeric():
+            stack.append(exp[0])
+            del exp[0]
+        else:
+            stack.append("(" + stack[-2] + exp[0] + stack[-1] + ")")
+            del stack[-2]
+            del stack[-2]
+            del exp[0]
+    print("%.2f" % eval("".join(stack)))

@@ -1,0 +1,10 @@
+from collections import defaultdict
+tree = defaultdict(int)
+n = int(input())
+for i in range(n):
+    tree[input()] += 1
+key = list(tree.keys())
+key.sort()
+for x in key:
+    r = "%.4f" % (100 * tree[x] / n)
+    print("{} {}%".format(x, r))

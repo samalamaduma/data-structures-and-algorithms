@@ -1,0 +1,6 @@
+print(bin(-5))
+m = int(input())
+def to_compliment(n,b):
+    bin = str(int(n,2))
+    if len(bin) > 5:
+        pass

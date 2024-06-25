@@ -1,0 +1,18 @@
+from math import sqrt
+n = int(input())
+m = int(sqrt(n)) + 1
+primelist = [2]
+blist = [True] * (m + 1)
+alist = []
+for k in range(3, m + 1, 2):
+    if blist[k]:
+        primelist.append(k)
+        for t in range(2 * k, m + 1, k):
+            blist[t] = False
+answer = "YES"
+while n > 0:
+    for i in range(len(primelist)):
+        if n % primelist[i] == 0 and primelist[i] < n or n == 1:
+            answer = "NO"
+    n = n // 10
+print(answer)

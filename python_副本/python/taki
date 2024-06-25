@@ -1,0 +1,29 @@
+from collections import defaultdict
+t = int(input())
+
+for _ in range(t):
+    name = {}
+    friend = defaultdict(list)
+    n = int(input())
+    namelist = []
+    ans = 0
+
+    def f(i):
+        global ans
+        ans += 1
+        namelist.append(name[i])
+        if not friend[i]:
+            return
+        else:
+            for x in friend[i]:
+                f(x)
+
+    for i in range(n):
+        temp = input().split()
+        name[i + 1] = temp[0]
+        friend[i + 1] = list(map(int, temp[1:]))
+        friend[i + 1].sort()
+    for i in range(n):
+        f(i + 1)
+    print(ans)
+    print(*namelist)

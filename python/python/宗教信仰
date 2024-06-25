@@ -1,0 +1,30 @@
+def find(i, parent):
+    if parent[i] == i:
+        return i
+    else:
+        result = find(parent[i], parent)
+        parent[i] = result
+        return result
+
+def union(i, j, parent):
+    ifath = find(i, parent)
+    jfath = find(j, parent)
+    parent[ifath] = jfath
+
+case = 0
+while True:
+    case += 1
+    n, m = map(int, input().split())
+    if n != 0:
+        parent = [i for i in range(n + 1)]
+        parent[0] = 1
+        for i in range(m):
+            temp1, temp2 = map(int, input().split())
+            union(temp1, temp2, parent)
+        ans = 0
+        for i in range(n + 1):
+            if parent[i] == i:
+                ans += 1
+        print("Case {}: {}".format(case, ans))
+    else:
+        break

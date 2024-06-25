@@ -1,0 +1,15 @@
+board = [list(input()) for i in range(10)]
+dir = [(0, 1), (1, 0), (-1, 0), (0, -1)]
+ying = 0
+def dfs(board, x, y):
+    if not 0 <= x < 10 or not 0 <= y < 10 or board[x][y] != ".":
+        return 0
+    board[x][y] = 0
+    for dx, dy in dir:
+        nx, ny = x + dx, y + dy
+        dfs(board, nx, ny)
+    return 1
+for i in range(10):
+    for j in range(10):
+        ying += dfs(board, i, j)
+print(ying)

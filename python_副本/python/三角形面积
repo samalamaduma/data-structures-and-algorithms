@@ -1,0 +1,28 @@
+a1,a2,a3,a4,a5,a6 = map(int, input().split())
+maxi = 1
+mini = 98
+if a1 % 2 == 0:
+    mini = min(mini, a1)
+else:
+    maxi = max(maxi, a1)
+if a2 % 2 == 0:
+    mini = min(mini, a2)
+else:
+    maxi = max(maxi, a2)
+if a3 % 2 == 0:
+    mini = min(mini, a3)
+else:
+    maxi = max(maxi, a3)
+if a4 % 2 == 0:
+    mini = min(mini, a4)
+else:
+    maxi = max(maxi, a4)
+if a5 % 2 == 0:
+    mini = min(mini, a5)
+else:
+    maxi = max(maxi, a5)
+if a6 % 2 == 0:
+    mini = min(mini, a6)
+else:
+    maxi = max(maxi, a6)
+print(abs(maxi - mini))

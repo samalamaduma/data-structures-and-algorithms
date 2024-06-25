@@ -1,0 +1,35 @@
+from collections import defaultdict
+from collections import deque
+
+n = int(input())
+root = []
+ans = []
+children = defaultdict(list)
+childrennumber = {}
+def posto(root1):
+    ans = []
+    for x in children[root1]:
+        ans += posto(x)
+    ans += [root1]
+    return ans
+for _ in range(n):
+    tree = input().split()
+    l = len(tree)
+    for i in range(l // 2):
+        childrennumber[tree[2 * i]] = int(tree[2 * i + 1])
+    tree = [tree[2 * i] for i in range(l // 2)]
+    tree.reverse()
+    stack = deque()
+    stack.append(tree.pop())
+    root.append(stack[0])
+    while stack:
+        current = stack.popleft()
+        for i in range(childrennumber[current]):
+            temp = tree.pop()
+            stack.append(temp)
+            children[current].append(temp)
+
+ans = []
+for x in root:
+    ans += posto(x)
+print(" ".join(ans))

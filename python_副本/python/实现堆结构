@@ -1,0 +1,9 @@
+import heapq
+n = int(input())
+h = []
+for i in range(n):
+    temp = list(map(int, input().split()))
+    if temp[0] == 1:
+        heapq.heappush(h, temp[1])
+    else:
+        print(heapq.heappop(h))

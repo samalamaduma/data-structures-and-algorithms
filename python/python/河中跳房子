@@ -1,0 +1,27 @@
+def check(x):
+    now = 0
+    num = 0
+    for i in range(n + 1):
+        if now + x > stone[i]:
+            num += 1
+        else:
+            now = stone[i]
+    return num
+
+l, n, m = map(int, input().split())
+stone = [int(input()) for _ in range(n)]
+stone += [l]
+x = l // 2
+lower = 0
+upper = l
+while lower < upper - 1:
+    if check(x) <= m:
+        lower = x
+        x = (lower + upper) // 2
+    else:
+        upper = x
+        x = (lower + upper) // 2
+if n == m:
+    print(l)
+else:
+    print(lower)

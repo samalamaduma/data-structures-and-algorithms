@@ -1,0 +1,13 @@
+alist = input().split()
+while not int(alist[0]) ==0:
+    a,b,c,d = alist
+    a = int(a); b = int(b); d = int(d)
+    if d == 1:
+        for i in range(a):
+            print(c*b)
+    else:
+        print(c*b)
+        for i in range(a-2):
+            print(c+" "*(b-2)+c)
+        print(c*b)
+    alist = input().split()

@@ -1,0 +1,12 @@
+def move(x, From, To):
+    print(From + "->" + str(x) + "->" + To)
+def henoi(n, From, by, To):
+    if n == 1:
+        move(n, From, To)
+    else:
+        henoi(n - 1, From, To, by)
+        move(n, From, To)
+        henoi(n - 1, by, From, To)
+n, a, b, c = input().split()
+n = int(n)
+henoi(n, a, c, b)

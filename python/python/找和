@@ -1,0 +1,27 @@
+lst = list(map(int, input().split()))
+m = lst.pop(-1)
+n = len(lst)
+lst.sort()
+answer = []
+for i in range(2 ** n):
+    temp = str(bin(2 ** n - 1 - i))[2: len(str(bin(2 ** n - 1 - i))) + 1]
+    l = len(temp)
+    temp = "0" * (n - l) + temp
+    templist = list(temp)
+    templist = list(map(int, templist))
+    result = [templist[i] * lst[i] for i in range(n)]
+    if sum(result) == m:
+        tempanswer = []
+        for i in range(1, n + 1):
+            if templist[n - i] == 1:
+                tempanswer.append(lst[n - i])
+            tempanswer.sort()
+        answer.append(tempanswer)
+if len(answer) == 0:
+    print("NULL")
+else:
+    for i in range(len(answer)):
+        t = len(answer[i])
+        for j in range(t - 1):
+            print(answer[i][j], end = ",")
+        print(answer[i][-1])

@@ -1,0 +1,6 @@
+cantor = ["*"]
+n = int(input())
+for i in range(n):
+    l = len(cantor)
+    cantor = cantor + ["-" for i in range(l)] + cantor
+print("".join(cantor))

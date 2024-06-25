@@ -1,0 +1,5 @@
+alist = list(input())
+blist = list(input())
+clist = alist
+clist.append(1)
+print(alist)

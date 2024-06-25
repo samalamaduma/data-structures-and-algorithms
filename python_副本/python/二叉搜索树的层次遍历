@@ -1,0 +1,31 @@
+class treenode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def build(lst):
+
+    root = lst[0]
+    left = [x for x in lst if x.value < root.value]
+    right = [x for x in lst if x.value > root.value]
+    if left:
+        root.left = left[0]
+        build(left)
+    if right:
+        root.right = right[0]
+        build(right)
+    return
+
+numlist = list(map(int, input().split()))
+lst = [treenode(x) for x in numlist]
+build(lst)
+root = lst[0]
+level = [root]
+for x in level:
+    if x.left:
+        level.append(x.left)
+    if x.right:
+        level.append(x.right)
+ans = [str(x.value) for x in level]
+print(" ".join(ans))

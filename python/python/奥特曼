@@ -1,0 +1,23 @@
+form, weapon, monster = input().split()
+weapon = int(weapon)
+monster = int(monster)
+if form == "alpha":
+    if 2 + weapon >= monster:
+        print("YES")
+    else:
+        print("NO")
+if form == "beta":
+    if 1 + weapon >= monster:
+        print("YES")
+    else:
+        print("NO")
+if form == "gamma":
+    if 3 + weapon >= monster:
+        print("YES")
+    else:
+        print("NO")
+if form == "delta":
+    if 1 + 5 * weapon >= monster:
+        print("YES")
+    else:
+        print("NO")

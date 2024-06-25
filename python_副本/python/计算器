@@ -1,0 +1,4 @@
+sentence = "I'm a long sentence,"\
+"but I can be continued in the next line"
+type = 5
+print (type)

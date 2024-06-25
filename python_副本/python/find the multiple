@@ -1,0 +1,16 @@
+while True:
+    n = int(input())
+    if n != 0:
+        visited = set()
+        pos = [1]
+        for x in pos:
+            temp = x % n
+            if temp == 0:
+                print(x)
+                break
+            elif temp not in visited:
+                visited.add(temp)
+                pos.append(10 * x)
+                pos.append(10 * x + 1)
+    else:
+        break

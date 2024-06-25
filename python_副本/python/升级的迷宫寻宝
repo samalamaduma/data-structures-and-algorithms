@@ -1,0 +1,45 @@
+from collections import deque
+from collections import defaultdict
+
+x, y = map(int, input().split())
+lst = [list(input()) for i in range(x)]
+
+def go(x1, y1, x2, y2, mark):
+    visited = set()
+    visited.add((x1, y1))
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+    locations = deque()
+    previous = defaultdict(tuple)
+    locations.append((x1, y1))
+    route = []
+    while locations:
+        x0, y0 = locations.popleft()
+        for dx, dy in directions:
+            nx, ny = x0 + dx, y0 + dy
+            if 0 <= nx < x and 0 <= ny < y and (nx, ny) not in visited and (lst[nx][ny] != "1" or lst[nx][ny] == mark):
+                visited.add((nx, ny))
+                previous[(nx, ny)] = (x0, y0)
+                locations.append((nx, ny))
+        if (x2, y2) in visited:
+            route.append((x2 + 1, y2 + 1))
+            tempx, tempy = x2, y2
+            while previous[(tempx, tempy)]:
+                route = [(previous[(tempx, tempy)][0] + 1, previous[(tempx, tempy)][1] + 1)] + route
+                tempx, tempy = previous[(tempx, tempy)]
+            return route
+
+for i in range(x):
+    for j in range(y):
+        if lst[i][j] == "R":
+            start = (i, j)
+        if lst[i][j] == "Y":
+            key = (i, j)
+        if lst[i][j] == "C":
+            end = (i, j)
+
+route1 = go(start[0], start[1], key[0], key[1], "Y")
+route2 = go(key[0], key[1], end[0], end[1], "C")
+for x in route1:
+    print("{} {}".format(x[0], x[1]))
+for x in route2[1:]:
+    print("{} {}".format(x[0], x[1]))

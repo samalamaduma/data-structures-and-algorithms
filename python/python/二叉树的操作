@@ -1,0 +1,29 @@
+from collections import defaultdict
+
+t = int(input())
+for i in range(t):
+    parent = defaultdict(tuple)
+    children = defaultdict(list)
+    n, m = map(int, input().split())
+    for j in range(n):
+        a, b, c = map(int, input().split())
+        children[a] = [b, c]
+        if b >= 0:
+            parent[b] = (a, 0)
+        if c >= 0:
+            parent[c] = (a, 1)
+    for k in range(m):
+        temp = input().split()
+        if temp[0] == "2":
+            node = int(temp[1])
+            while children[node][0] >= 0:
+                node = children[node][0]
+            print(node)
+        else:
+            node1, node2 = int(temp[1]), int(temp[2])
+            temp1 = parent[node1]
+            temp2 = parent[node2]
+            parent[node1] = temp2
+            parent[node2] = temp1
+            children[temp1[0]][temp1[1]] = node2
+            children[temp2[0]][temp2[1]] = node1

@@ -1,0 +1,10 @@
+def f(x, n):
+    i = 0
+    while i * x < n:
+        i += 1
+    return i
+n = int(input())
+lst1 = list(map(int, input().split()))
+lst2 = list(map(int, input().split()))
+lst3 = [lst1[i] * f(lst2[i], n) for i in range(len(lst1))]
+print(min(lst3))

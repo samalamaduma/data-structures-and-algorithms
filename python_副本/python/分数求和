@@ -1,0 +1,25 @@
+n = int(input())
+def gcd(x, y):
+    if x < y:
+        return gcd(y, x)
+    else:
+        while x % y != 0:
+            x, y = y, x % y
+        return y
+def add(x, y):
+    a, b = map(int, x.split("/"))
+    c, d = map(int, y.split("/"))
+    m = a * d + b * c
+    n = b * d
+    m, n = int(m / gcd(m, n)), int(n / gcd(m, n))
+    return "{}/{}".format(m, n)
+i = 1
+x = input()
+while i < n:
+    x = add(x, input())
+    i += 1
+alist = x.split("/")
+if alist[1] == "1":
+    print(alist[0])
+else:
+    print(x)

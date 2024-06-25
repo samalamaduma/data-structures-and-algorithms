@@ -1,0 +1,23 @@
+n = int(input())
+from math import sqrt
+answer = []
+for i in range(2, int(sqrt(2 * n)) + 1):
+    if i % 2 == 0:
+        if n % i != 0 and 2 * n % i == 0:
+            temp = int(n / i - (i - 1) / 2)
+            tempanswer = [temp + j for j in range(i)]
+            answer.append(tempanswer)
+    else:
+        if n % i == 0:
+            temp = int(n / i - (i - 1) / 2)
+            tempanswer = [temp + j for j in range(i)]
+            answer.append(tempanswer)
+if answer == []:
+    print("None")
+else:
+    for i in range(len(answer)):
+        l = len(answer[i])
+        for j in range(l - 1):
+            print(answer[i][j], end = "+")
+        print(answer[i][l - 1], end = "=")
+        print(n)

@@ -1,0 +1,14 @@
+a = input()
+if a == "0":
+    print(0)
+else:
+    a = a.rstrip("0")
+    b = a[0]
+    a = a.lstrip("-")
+    lst = list(a)
+    lst.reverse()
+    answer = int("".join(lst))
+    if b == "-":
+        print(-answer)
+    else:
+        print(answer)

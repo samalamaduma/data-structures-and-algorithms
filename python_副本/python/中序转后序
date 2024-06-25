@@ -1,0 +1,38 @@
+def f(str1):
+    order = {"+": 1, "-": 1, "/": 2, "*": 2}
+    stack =[]
+    postfix = []
+    number = ""
+
+    for char in str1:
+        if char.isnumeric() or char == ".":
+            number += char
+        else:
+            if number:
+                num = float(number)
+                postfix.append(int(num) if num.is_integer() else num)
+                number = ""
+            if char in "+-*/":
+                while stack and stack[-1] in "+-*/" and order[stack[-1]] >= order[char]:
+                    postfix.append(stack.pop())
+                stack.append(char)
+            elif char == "(":
+                stack.append(char)
+            elif char == ")":
+                while stack and stack[-1] != "(":
+                    postfix.append(stack.pop())
+                stack.pop()
+        
+    if number:
+        num = float(number)
+        postfix.append(int(num) if num.is_integer() else num)
+
+    while stack:
+        postfix.append(stack.pop())
+    
+    return " ".join(str(x) for x in postfix)
+
+n = int(input())
+for i in range(n):
+    str1 = input()
+    print(f(str1))

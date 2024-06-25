@@ -1,0 +1,34 @@
+class treenode:
+    def __init__(self):
+        self.parent = None
+        self.children = []
+        self.layer = 0
+
+def build(s):
+    root = treenode()
+    nodes = [root]
+    stack = [root]
+    for x in s:
+        if x == "d":
+            temp = treenode()
+            stack[-1].children.append(temp)
+            temp.parent = stack[-1]
+            temp.layer = stack[-1].layer + 1
+            nodes.append(temp)
+            stack.append(temp)
+        else:
+            stack.pop()
+    return nodes
+
+s = input()
+nodes = build(s)
+layers = [x.layer for x in nodes]
+max1 = max(layers)
+lst = [nodes[0]]
+for x in lst:
+    for i in range(len(x.children)):
+        x.children[i].layer = x.layer + i + 1
+    lst += x.children
+layers2 = [x.layer for x in nodes]
+max2 = max(layers2)
+print("{} => {}".format(max1, max2))

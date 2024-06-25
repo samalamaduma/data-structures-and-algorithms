@@ -1,0 +1,21 @@
+from collections import defaultdict
+n = int(input())
+for i in range(n):
+    temp1 = list(map(int, input().split()))
+    temp2 = list(map(int, input().split()))
+    l1 = len(temp1) // 2 - 1
+    l2 = len(temp2) // 2 - 1
+    poly1 = [(temp1[2 * i], temp1[2 * i + 1]) for i in range(l1)]
+    poly2 = [(temp2[2 * i], temp2[2 * i + 1]) for i in range(l2)]
+    sumpoly = defaultdict(int)
+    for x in poly1:
+        sumpoly[x[1]] = sumpoly[x[1]] + x[0]
+    for x in poly2:
+        sumpoly[x[1]] = sumpoly[x[1]] + x[0]
+    power = list(sumpoly.keys())
+    power.sort(reverse = True)
+    answer = []
+    for x in power:
+        if sumpoly[x] != 0:
+            answer.append("[ {} {} ]".format(sumpoly[x], x))
+    print(" ".join(answer))

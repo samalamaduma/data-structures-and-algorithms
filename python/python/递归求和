@@ -1,0 +1,23 @@
+n = int(input())
+def f(n):
+    if n < 3:
+        return n
+    else:
+        l = int(n)
+        alist = [n - l, n - l + 1, n - l + 2]
+        if n % 1 == 0:
+            while len(alist) <= l:
+                alist.append(int(alist[-1]) + 2 * int(alist[-2]) + 3 * int(alist[-3]))
+        if n % 1 != 0 :
+            while len(alist) <= l:
+                alist.append(float(alist[-1]) + 2 * float(alist[-2]) + 3 * float(alist[-3]))
+        return alist[l]
+i = 0
+while i < n:
+    x = input()
+    alist = x.split(".")
+    if len(alist) == 1:
+        print(int(f(int(x))))
+    else:
+        print('%1.5e' % f(float(x)))
+    i = i + 1

@@ -1,0 +1,11 @@
+vowel = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u", "y", "Y"]
+str1 = input()
+str1 = str1.lower()
+alist = list(str1)
+l = len(alist)
+for i in range(l):
+    if alist[l - 1 - i] in vowel:
+        del alist[l - 1 - i]
+    else:
+        alist.insert(l - 1 - i, ".")
+print("".join(alist))

@@ -1,0 +1,15 @@
+n = int(input())
+mod5 = 3 * n - 5 * ((3 * n) // 5)
+mod3 = 2 * n - 3 * ((2 * n) // 3)
+if mod5 == 3 or mod5 == 4 or mod5 == 2:
+    print(3 * n - mod5)
+elif mod5 == 1:
+    if mod3 == 1:
+        print(3 * n - 1)
+    else:
+        print(3 * n - 6)
+elif mod5 == 0:
+    if mod3 == 0:
+        print(3 * n)
+    else:
+        print(3 * n - 5)

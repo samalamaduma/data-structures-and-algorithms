@@ -1,0 +1,31 @@
+def f(str1):
+    l = len(str1)
+    answer = []
+    templ = []
+    tempr = []
+    temp = []
+    for i in range(l):
+        answer.append(" ")
+    for i in range(l):
+        if str1[i] == "(":
+            temp.append("(")
+            templ.append(i)
+        if str1[i] == ")":
+            if temp == []:
+                tempr.append(i)
+            elif temp[-1] == "(":
+                del temp[-1]
+                del templ[-1]
+    for i in range(len(templ)):
+        answer[templ[i]] = "$"
+    for i in range(len(tempr)):
+        answer[tempr[i]] = "?"
+    print("".join(answer))
+
+while True:
+    try:
+        str = input()
+        print(str)
+        f(str)
+    except EOFError:
+        break

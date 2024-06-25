@@ -1,0 +1,15 @@
+times = 1
+while True:
+    p, e, i, d = map(int, input().split())
+    if p + e + i + d == -4:
+        exit()
+    else:
+        temp = p % 23
+        while temp <= d:
+            temp += 23
+        while (temp - e) % 28 != 0:
+            temp += 23
+        while (temp - i) % 33 != 0:
+            temp += 644
+        print("Case {}: the next triple peak occurs in {} days.".format(times, temp - d))
+        times += 1

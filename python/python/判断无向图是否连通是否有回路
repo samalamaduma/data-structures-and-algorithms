@@ -1,0 +1,40 @@
+def find(lst, x):
+    if lst[x] == x:
+        return x
+    else:
+        temp = find(lst, lst[x])
+        lst[x] = temp
+        return temp
+    
+def union(lst, x, y):
+    temp1 = find(lst, x)
+    temp2 = find(lst, y)
+    lst[temp1] = temp2
+
+from collections import defaultdict
+n, m = map(int, input().split())
+lst = [i for i in range(n)]
+connect = defaultdict(list)
+graph = defaultdict(list)
+for i in range(m):
+    x, y = map(int, input().split())
+    graph[x].append(y)
+    graph[y].append(x)
+    union(lst, x, y)
+for i in range(n):
+    temp = find(lst, i)
+    connect[temp].append(i)
+if len(list(connect.keys())) == 1:
+    print("connected:yes")
+else:
+    print("connected:no")
+
+for x in list(connect.keys()):
+    deg = 0
+    for y in connect[x]:
+        deg += len(graph[y])
+    if deg > 2 * (len(connect[x]) - 1):
+        print("loop:yes")
+        break
+else:
+    print("loop:no")

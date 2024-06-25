@@ -1,0 +1,8 @@
+len = int(input())
+alist = list(input().split())
+target = int(input())
+for i in range(len):
+    for j in range(i + 1, len):
+        if int(alist[i]) + int(alist[j]) == target:
+            print(i, end = " ")
+            print(j)

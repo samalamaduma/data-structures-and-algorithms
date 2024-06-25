@@ -1,0 +1,28 @@
+from math import sqrt
+n = int(input())
+primelist = [2]
+blist = []
+for i in range(3, n + 2):
+    le = len(primelist)
+    primelist.append(i)
+    for j in range(le):
+        if i % int(primelist[j]) == 0:
+            del primelist[-1]
+            break
+def f(x):
+    if x in primelist:
+        return x
+    else:
+        i = 2
+        while i <= sqrt(x):
+            if x % i == 0:
+                return (i + f(int(x / i)))
+            i = i + 1
+def gcd(x, y):
+    while x % y != 0:
+        x, y = y, x % y
+    if y == 1:
+        return "yes"
+    else:
+        return "no"
+print(gcd(n, f(n)))

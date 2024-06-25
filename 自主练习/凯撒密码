@@ -1,0 +1,11 @@
+alist = list(input())
+def f(x):
+    if x == " ":
+        return " "
+    elif 67 < ord(x) < 91:
+        return chr(ord(x) + 29)
+    else:
+        return chr(ord(x) + 55)
+for i in range(len(alist)):
+    alist[i] = f(alist[i])
+print("".join(alist))

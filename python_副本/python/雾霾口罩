@@ -1,0 +1,11 @@
+n, m = map(int, input().split())
+lst = list(map(int, input().split()))
+mask = m
+answer = 1
+for i in range(n):
+    if mask <= 0:
+        answer += 1
+        mask = m - lst[i]
+    else:
+        mask = mask - lst[i]
+print(answer)

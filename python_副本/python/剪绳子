@@ -1,0 +1,12 @@
+import heapq
+n = int(input())
+lst = list(map(int, input().split()))
+heapq.heapify(lst)
+ans = 0
+while len(lst) > 1:
+    temp = 0
+    temp += heapq.heappop(lst)
+    temp += heapq.heappop(lst)
+    heapq.heappush(lst, temp)
+    ans += temp
+print(ans)

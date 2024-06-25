@@ -1,0 +1,20 @@
+n, k = map(int, input().split())
+length = [int(input()) for i in range(n)]
+temp1 = int(sum(length) / k)
+while True:
+    if temp1 == 0:
+        print(0)
+        exit()
+    numbers = [int(x / temp1) for x in length]
+    if sum(numbers) >= k:
+        break
+    temp1 = int(temp1 / 2)
+temp2 = 2 * temp1 + 1
+while temp2 - temp1 > 1:
+    temp = int((temp1 + temp2) / 2)
+    numbers = [int(x / temp) for x in length]
+    if sum(numbers) >= k:
+        temp1 = temp
+    else:
+        temp2 = temp
+print(temp1)

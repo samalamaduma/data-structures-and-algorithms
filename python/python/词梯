@@ -1,0 +1,34 @@
+from collections import defaultdict
+
+graph = defaultdict(list)
+n = int(input())
+for i in range(n):
+    word = input()
+    for i in range(4):
+        temp = word[:i] + "_" + word[i + 1:]
+        graph[temp].append(word)
+
+start, end = input().split()
+path = {}
+visited = set()
+vertice = [start]
+path[start] = (start, None, 0)
+visited.add(start)
+for x in vertice:
+    for i in range(4):
+        x1 = x[:i] + "_" + x[i + 1:]
+        for t in graph[x1]:
+            if t not in visited:
+                visited.add(t)
+                path[t] = (t, x, path[x][2] + 1)
+                vertice.append(t)
+                if t == end:
+                    ans = [t]
+                    temp = t
+                    while path[temp][1]:
+                        ans.append(path[temp][1])
+                        temp = path[temp][1]
+                    ans = ans[::-1]
+                    print(" ".join(ans))
+                    exit()
+print("NO")

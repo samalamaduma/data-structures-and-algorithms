@@ -1,0 +1,6 @@
+tlist = [0, 1, 1]
+n = int(input())
+for i in range(3, n + 1):
+    temp = tlist[-1] + tlist[-2] + tlist[-3]
+    tlist.append(temp)
+print(tlist[n])

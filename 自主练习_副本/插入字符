@@ -1,0 +1,6 @@
+s = input()
+a = input()
+l = len(s)
+print(a, end = "")
+for i in range(l):
+    print(s[i], end = a)

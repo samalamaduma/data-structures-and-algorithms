@@ -1,0 +1,36 @@
+class treenode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def buildtree(preorder, inorder):
+    if not preorder or not inorder:
+        return None
+    else:
+        root = treenode(preorder[0])
+        loc = inorder.index(root.value)
+        root.left = buildtree(preorder[1: loc + 1], inorder[:loc])
+        root.right = buildtree(preorder[loc + 1:], inorder[loc + 1:])
+        return root
+    
+def postorder(root):
+    if root.left == None and root.right == None:
+        return root.value
+    else:
+        temp = ""
+        if root.left:
+            temp += postorder(root.left)
+        if root.right:
+            temp += postorder(root.right)
+        temp += root.value
+        return temp
+
+while True:
+    try:
+        preorder = input()
+        inorder = input()
+        root = buildtree(preorder, inorder)
+        print(postorder(root))
+    except EOFError:
+        break

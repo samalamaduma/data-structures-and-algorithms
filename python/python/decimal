@@ -1,0 +1,5 @@
+from decimal import Decimal
+a1 = float("1.00")
+a2 = float("1.0")
+if a1 == a2:
+    print("ok")

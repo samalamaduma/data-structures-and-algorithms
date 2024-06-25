@@ -1,0 +1,9 @@
+import math
+alist = input().split()
+k = len(alist)/2
+x = 0 ; y = 0
+for i in range(int(k)):
+    x = x + float(alist[2 * i])
+    y = y + float(alist[2 * i + 1])
+d = math.sqrt(x ** 2 + y ** 2)
+print("%.4f"%d)

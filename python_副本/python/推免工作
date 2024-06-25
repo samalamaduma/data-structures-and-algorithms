@@ -1,0 +1,18 @@
+def gpa(x):
+    if x >= 60:
+        return 4-3*(100-x)**2/1600
+    else:
+        return 0
+
+rank = []
+n, m = map(int, input().split())
+for i in range(n):
+    temp = list(map(int, input().split()))
+    num = temp.pop(0)
+    score = [temp[2 * k] for k in range(len(temp) // 2)]
+    point = [temp[2 * k + 1] for k in range(len(temp) // 2)]
+    GPA = sum([gpa(score[k]) * point[k] for k in range(len(score))]) / sum(point)
+    rank.append((num, GPA))
+rank.sort(key = lambda x: x[1], reverse = True)
+ans = [str(rank[i][0]) for i in range(m)]
+print(" ".join(ans))

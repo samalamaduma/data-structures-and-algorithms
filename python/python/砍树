@@ -1,0 +1,15 @@
+def f(alist, a, b):
+    for i in range(a, b + 1):
+        alist[i] = 0
+    return alist
+L, n = map(int, input().split())
+i = 0
+alist = []
+for k in range(L + 1):
+    alist.append(1)
+while i < n:
+    a, b = map(int, input().split())
+    for k in range(a, b + 1):
+        alist[k] = 0
+    i += 1
+print(sum(alist))

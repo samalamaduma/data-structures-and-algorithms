@@ -1,0 +1,15 @@
+k = int(input())
+alist = list(input().split())
+num1 = 0
+num5 = 0
+num10 = 0
+for i in range(k):
+    if int(alist[i]) == 1:
+        num1 = num1 + 1
+    if int(alist[i]) == 5:
+        num5 = num5 + 1
+    if int(alist[i]) == 10:
+        num10 = num10 + 1
+print(num1)
+print(num5)
+print(num10)

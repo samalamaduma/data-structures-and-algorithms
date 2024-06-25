@@ -1,0 +1,9 @@
+def yang(x,y):
+    if y == 1 or x == y:
+        return 1
+    else:
+        return (yang(x - 1, y - 1) + yang(x - 1, y))
+x = int(input())
+for i in range(x - 1):
+    print(yang(x,i + 1), end = " ")
+print(yang(x,x))

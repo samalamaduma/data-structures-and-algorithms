@@ -1,0 +1,15 @@
+T = int(input())
+def f(n, m, lst):
+    kuangmo = 0
+    for i in range(n):
+        if sum(lst[i]) >= m / 2:
+            kuangmo += 1
+    print(kuangmo)
+s = 0
+while s < T:
+    n, m = map(int, input().split())
+    lst = []
+    for i in range(n):
+        lst.append(list(map(int, input().split())))
+    f(n, m, lst)
+    s += 1

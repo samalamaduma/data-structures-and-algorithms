@@ -1,0 +1,20 @@
+n, d = map(int, input().split())
+alist = list(map(int, input().split()))
+def f(lst):
+    if len(lst) == 1:
+        print(lst[0])
+    else:
+        max = lst[0]
+        min = lst[0]
+        min_pos = 0
+        for i in range(1, len(lst)):
+            if abs(lst[i] - max) <= d and abs(lst[i] - min) <= d and lst[i] < lst[min_pos]:
+                min_pos = i
+            if lst[i] > max:
+                max = lst[i]
+            if lst[i] < min:
+                min = lst[i]
+        print(lst[min_pos])
+        del lst[min_pos]
+        f(lst)
+f(alist)

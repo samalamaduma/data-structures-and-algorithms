@@ -1,0 +1,35 @@
+from collections import deque
+directions = [(0, 1), (0, -1), (-1, 0), (1, 0)]
+
+t = int(input())
+for _ in range(t):
+    visited = set()
+    maze = []
+    r, c, k = map(int, input().split())
+    for i in range(r):
+        maze.append(list(input()))
+    d = deque()
+    for i in range(r):
+        for j in range(c):
+            if maze[i][j] == "S":
+                x0, y0 = i, j
+            if maze[i][j] == "E":
+                x1, y1 = i, j
+    d.append((x0, y0, 0))
+    visited.add((x0, y0, 0))
+    flag = False
+    while d:
+        x, y, t = d.popleft()
+        for dx, dy in directions:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < r and 0 <= ny < c and ((t + 1) % k == 0 or maze[nx][ny] != "#") and (nx, ny, (t + 1) % k) not in visited:
+                d.append((nx, ny, t + 1))
+                visited.add((nx, ny, (t + 1) % k))
+                if nx == x1 and ny == y1:
+                    print(t + 1)
+                    flag = True
+                    break
+        if flag:
+            break
+    if not flag:
+        print("Oop!")

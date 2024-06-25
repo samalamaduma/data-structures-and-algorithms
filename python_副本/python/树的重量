@@ -1,0 +1,39 @@
+from collections import deque
+
+class node:
+    def __init__(self, value):
+        self.value = value
+        self.weight = 0
+        self.children = [self]
+    
+k, n = map(int, input().split())
+nodes = [0] + [node(i + 1) for i in range(2 ** k)]
+
+def build(lst, k):
+    if k > 1:
+        for i in range(2 ** (k - 1), 2 ** k):
+            temp = i // 2
+            lst[temp].children += lst[i].children
+        build(lst, k - 1)
+    else:
+        return
+    
+build(nodes, k)
+    
+def add(x, y):
+    for t in nodes[x].children:
+        t.weight += y
+
+def inquire(x):
+    s = 0
+    for t in nodes[x].children:
+        s += t.weight
+    print(s)
+
+for _ in range(n):
+    operation = list(map(int, input().split()))
+    if operation[0] == 1:
+        x, y = operation[1], operation[2]
+        add(x, y)
+    else:
+        inquire(operation[1])

@@ -1,0 +1,26 @@
+n, m = map(int, input().split())
+costs = [int(input()) for i in range(n)]
+
+def check(costs, x):
+    temp = 0
+    months = 1
+    for i in range(len(costs)):
+        if temp + costs[i] > x:
+            months += 1
+            temp = costs[i]
+        else:
+            temp += costs[i]
+    if months > m:
+        return False
+    else:
+        return True
+
+ansmax = sum(costs)
+ansmin = max(costs)
+while ansmax > ansmin:
+    mid = (ansmax + ansmin) // 2
+    if check(costs, mid):
+        ansmax = mid
+    else:
+        ansmin = mid + 1
+print(ansmax)

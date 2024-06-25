@@ -1,0 +1,13 @@
+n = int(input())
+s = input()
+s = list(s)
+k = len(s) // n
+table = []
+for i in range(k):
+    if i % 2 == 0:
+        table.append(s[i * n: (i + 1) * n])
+    else:
+        table.append(s[(i + 1) * n - 1: i * n - 1: -1])
+for i in range(n):
+    for j in range(k):
+        print(table[j][i], end = "")

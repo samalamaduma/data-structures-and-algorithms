@@ -1,0 +1,11 @@
+while True:
+    n, m = map(int, input().split())
+    if n == 0:
+        break
+    else:
+        monkeys = [i + 1 for i in range(n)]
+        temp = (m - 1) % n
+        while len(monkeys) > 1:
+            del monkeys[temp]
+            temp = (temp + m - 1) % len(monkeys)
+        print(monkeys[0])

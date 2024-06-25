@@ -1,0 +1,19 @@
+while True:
+    n = int(input())
+    hotel = []
+    cmin = []
+    cand = 1
+    if n != 0:
+        for i in range(n):
+            hotel.append(tuple(map(int, input().split())))
+        hotel.sort(key = lambda x:(x[0], x[1]))
+        cmin.append(hotel[0][1])
+        for i in range(1, n):
+            if hotel[i][1] < cmin[-1]:
+                cand += 1
+                cmin.append(hotel[i][1])
+            else:
+                cmin.append(cmin[-1])    
+        print(cand)
+    else:
+        break

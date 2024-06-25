@@ -1,0 +1,12 @@
+len, len1 = map(int, input().split())
+list1 = list(map(int,input().split()))
+def f(i):
+    sum1 = 0
+    for j in range(i, i +len1):
+        sum1 = sum1 + list1[j]
+    return sum1
+mini = f(0)
+for i in range(len - len1):
+    if mini > f(i):
+        mini = f(i)
+print(mini)

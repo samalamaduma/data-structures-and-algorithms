@@ -1,0 +1,35 @@
+def find(x, parent):
+    if parent[x] == x:
+        return x
+    else:
+        temp = find(parent[x], parent)
+        parent[x] = temp
+        return temp
+
+def pour(x, y, parent):
+    xtemp = find(x, parent)
+    ytemp = find(y, parent)
+    parent[ytemp] = xtemp
+    return
+
+while True:
+    try:
+        n, m =map(int, input().split())
+        parent = [i for i in range(n + 1)]
+        for i in range(m):
+            x, y = map(int, input().split())
+            xloc = find(x, parent)
+            yloc = find(y, parent)
+            if xloc == yloc:
+                print("Yes")
+            else:
+                print("No")
+                pour(xloc, yloc, parent)
+        ans = []
+        for i in range(1, n + 1):
+            if parent[i] == i:
+                ans.append(str(i))
+        print(len(ans))
+        print(" ".join(ans))
+    except EOFError:
+        break

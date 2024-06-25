@@ -1,0 +1,14 @@
+y,m,d = map(int,input().split(","))
+num = 0
+if ((y // 4) * 4 == y and (y // 100) * 100 != y) or (y // 400) * 400 == y:
+    alist = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    for i in range(m - 1):
+        num = num + int(alist[i])
+    num = num + d
+    print(num)
+else:
+    alist = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    for i in range(m-1):
+        num = num + int(alist[i])
+    num = num + d
+    print(num)

@@ -1,0 +1,14 @@
+lst = list(input())
+while "[" in lst:
+    loc = lst.index("]")
+    number = []
+    i = 1
+    while lst[loc - i].isalpha():
+        i += 1
+    temp = loc - i
+    while lst[loc - i].isnumeric():
+        number = [lst[loc - i]] + number
+        i += 1
+    numb = int("".join(number))
+    lst[loc - i: loc + 1] = numb * lst[temp + 1: loc]
+print("".join(lst))

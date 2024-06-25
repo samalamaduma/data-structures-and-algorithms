@@ -1,0 +1,11 @@
+n = int(input())
+max = 0
+winner = 0
+for i in range(n):
+    lst = list(map(int, input().split()))
+    lst.sort()
+    score = sum(lst) - lst[4] - lst[0]
+    if score > max:
+        max = score
+        winner = i + 1
+print(str(winner) + " " + str(max))

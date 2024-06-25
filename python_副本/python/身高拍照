@@ -1,0 +1,13 @@
+def f(n, hlist):
+    hlist.sort()
+    if n % 2 == 1:
+        print(hlist[int((n - 1) / 2)])
+    elif n % 2 == 0:
+        print(hlist[int(n / 2)])
+while True:
+    n = int(input())
+    hlist = list(map(int, input().split()))
+    if n == 0:
+        exit()
+    else:
+        f(n, hlist)

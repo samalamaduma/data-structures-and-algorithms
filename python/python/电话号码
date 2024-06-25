@@ -1,0 +1,13 @@
+t = int(input())
+for i in range(t):
+    n = int(input())
+    numbers = []
+    for j in range(n):
+        numbers.append(input())
+    numbers.sort()
+    for k in range(n - 1):
+        if numbers[k] == numbers[k + 1][:len(numbers[k])]:
+            print("NO")
+            break
+    else:
+        print("YES")

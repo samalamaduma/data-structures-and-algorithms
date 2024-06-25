@@ -1,0 +1,22 @@
+import sys
+sys.setrecursionlimit(1000000)
+
+def dfs(field, x, y, n, m):
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (-1, 1), (-1, -1), (1, -1)]
+    field[x][y] = "."
+    for dx, dy in directions:
+        nx, ny = x + dx, y + dy
+        if 0 <= nx < n and 0 <= ny < m and field[nx][ny] == "W":
+            dfs(field, nx, ny, n, m)
+
+n, m = map(int, input().split())
+field = []
+ans = 0
+for i in range(n):
+    field.append(list(input()))
+for i in range(n):
+    for j in range(m):
+        if field[i][j] == "W":
+            ans += 1
+            dfs(field, i, j, n, m)
+print(ans)

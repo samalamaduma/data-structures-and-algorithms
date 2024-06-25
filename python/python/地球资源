@@ -1,0 +1,7 @@
+x,a,y,b = input().split()
+x = int(x)
+a = int(a)
+y = int(y)
+b = int(b)
+z = (a*x-y*b)/(a-b)
+print("%.2f" % z)

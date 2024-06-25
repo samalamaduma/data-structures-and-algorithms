@@ -1,0 +1,16 @@
+t = int(input())
+for i in range(t):
+    n = int(input())
+    lst = []
+    for i in range(n):
+        oper = tuple(input().split())
+        if oper[0] == "1":
+            lst.append(oper[1])
+        elif oper[1] == "0":
+            del lst[0]
+        elif oper[1] == "1":
+            del lst[-1]
+    if lst:
+        print(" ".join(lst))
+    else:
+        print("NULL")

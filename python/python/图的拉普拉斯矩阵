@@ -1,0 +1,14 @@
+from collections import defaultdict
+n, m = map(int, input().split())
+graph = defaultdict(list)
+for i in range(m):
+    v1, v2 = map(int, input().split())
+    graph[v1].append(v2)
+    graph[v2].append(v1)
+ans = [[0 for i in range(n)] for j in range(n)]
+for i in range(n):
+    ans[i][i] = len(graph[i])
+    for x in graph[i]:
+        ans[x][i] = -1
+for i in range(n):
+    print(" ".join(map(str, ans[i])))

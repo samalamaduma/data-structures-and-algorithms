@@ -1,0 +1,10 @@
+votes = list(map(int, input().split()))
+votecount = {}
+for x in votes:
+    if x not in votecount:
+        votecount[x] = votes.count(x)
+max = max(votecount.values())
+winners = [player for player in votecount.keys() if votecount[player] == max]
+winners.sort()
+winners = [str(x) for x in winners]
+print(" ".join(winners))

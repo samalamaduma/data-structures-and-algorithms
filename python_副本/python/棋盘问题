@@ -1,0 +1,37 @@
+def safe(board, row, col):
+    for i in range(row):
+        if board[i] == col:
+            return False
+    return True
+
+def possible(board, row, n, piece, k, landing):
+    global sol
+    if piece < k:
+        for i in range(n):
+            if row == n - 1 and piece == k - 1:
+                if safe(board, row, i) and landing[row][i] == "#":
+                    sol += 1
+            elif row < n - 1:
+                if safe(board, row, i) and landing[row][i] == "#":
+                    board[row] = i
+                    possible(board, row + 1, n, piece + 1, k, landing)
+                    board[row] = -1
+        if row < n - 1:
+            possible(board, row + 1, n, piece, k, landing)
+    elif piece == k:
+        sol += 1
+
+while True:
+    n, k = map(int, input().split())
+    if n == -1:
+        break
+    else:
+        landing = []
+        for i in range(n):
+            landing.append(input())
+        sol = 0
+        piece = 0
+        board = [-1] * n
+        row = 0
+        possible(board, row, n, piece, k, landing)
+        print(sol)

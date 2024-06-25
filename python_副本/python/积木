@@ -1,0 +1,33 @@
+n = int(input())
+d1 = list(input())
+d2 = list(input())
+d3 = list(input())
+d4 = list(input())
+def d(x):
+    if x == 1:
+        return d1
+    elif x == 2:
+        return d2
+    elif x == 3:
+        return d3
+    elif x == 4:
+        return d4
+from itertools import permutations
+words1 = []
+lst = [1, 2, 3, 4]
+temp = list(permutations(lst))
+for t in range(24):
+    words1 += [(i, j, m, n) for i in d(temp[t][0]) for j in d(temp[t][1]) for m in d(temp[t][2]) for n in d(temp[t][3])]
+for t in range(24):
+    words1 += [(i, j, m) for i in d(temp[t][0]) for j in d(temp[t][1]) for m in d(temp[t][2])]
+for t in range(24):
+    words1 += [(i, j) for i in d(temp[t][0]) for j in d(temp[t][1])]
+for t in range(24):
+    words1 += [(i) for i in d(temp[t][0])]
+words = set(words1)
+for i in range(n):
+    x = tuple(input())
+    if x in words:
+        print("YES")
+    else:
+        print("NO")

@@ -1,0 +1,14 @@
+n = int(input())
+def f(str1):
+    temp = list(str1)
+    times = [0] * 26
+    l = len(temp)
+    for i in range(l):
+        if 0 <= ord(temp[i]) - ord("a") < 26:
+            times[ord(temp[i]) - ord("a")] += 1
+    for i in range(len(times) - 1):
+        print(times[i], end = " ")
+    print(times[25])
+for i in range(n):
+    str1 = input()
+    f(str1)

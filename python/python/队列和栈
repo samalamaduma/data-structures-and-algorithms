@@ -1,0 +1,25 @@
+m = int(input())
+for i in range(m):
+    n = int(input())
+    lst = []
+    stack = []
+    state = 1
+    opers = []
+    for j in range(n):
+        opers.append(input().split())
+    for j in range(n):
+        if opers[j][0] == "pop":
+            if lst == []:
+                print("error")
+                print("error")
+                state = 0
+                break
+            else:
+                del lst[0]
+                del stack[-1]
+        if opers[j][0] == "push":
+            lst.append(opers[j][1])
+            stack.append(opers[j][1])
+    if state == 1:
+        print(" ".join(lst))
+        print(" ".join(stack))

@@ -1,0 +1,29 @@
+import heapq
+m, n, p = map(int, input().split())
+road = [input().split() for i in range(m)]
+
+def dij(x1, y1, x2, y2):
+    moves = [(0, -1), (-1, 0), (0, 1), (1, 0)]
+    dis = [[float("inf")] * n for i in range(m)]
+    pos = []
+    if road[x1][y1] == "#" or road[x2][y2] == "#":
+        print("NO")
+    else:
+        heapq.heappush(pos, (0, x1, y1))
+        while pos:
+            eff, x, y = heapq.heappop(pos)
+            if x == x2 and y == y2:
+                print(eff)
+                return
+            for dx, dy in moves:
+                nx = x + dx
+                ny = y + dy
+                if 0 <= nx < m and 0 <= ny < n and road[nx][ny] != "#":
+                    if dis[nx][ny] > eff + abs(int(road[nx][ny]) - int(road[x][y])):
+                        dis[nx][ny] = eff + abs(int(road[nx][ny]) - int(road[x][y])) 
+                        heapq.heappush(pos, (dis[nx][ny], nx, ny))
+        print("NO")
+
+for i in range(p):
+    x1, y1, x2, y2 = map(int, input().split())
+    dij(x1, y1, x2, y2)

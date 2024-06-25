@@ -1,0 +1,20 @@
+lst = list(input())
+lst1 = [x for x in lst]
+ans1 = []
+ans2 = []
+
+while len(lst) > 2:
+    loc = lst.index(".")
+    ans1.append(lst[loc - 1])
+    del lst[loc - 1]
+    del lst[loc - 1]
+print("".join(ans1))
+
+while len(lst1) > 2:
+    for i in range(len(lst1) - 1):
+        if lst1[i] == lst1[i + 1] == ".":
+            ans2.append(lst1[i - 1])
+            del lst1[i - 1]
+            del lst1[i - 1]
+            break
+print("".join(ans2))
