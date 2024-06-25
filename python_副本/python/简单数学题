@@ -1,7 +1,0 @@
-from math import log2
-from math import floor
-t = int(input())
-for i in range(t): 
-    n = int(input())
-    k = floor(log2(n))
-    print(int(n * (n + 1) / 2) - 2 ** (k + 2) + 2)

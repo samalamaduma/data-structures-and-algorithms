@@ -1,6 +1,0 @@
-from math import ceil
-n, k = map(int,input().split())
-if k > n:
-    print(2)
-else:
-    print(ceil(2 * n / k))

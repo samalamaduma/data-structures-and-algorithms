@@ -1,7 +1,0 @@
-from collections import deque
-a, b, c = map(int, input().split())
-visited = set()
-state = deque()
-while state:
-    temp = state.popleft()
-    visited.add(temp)

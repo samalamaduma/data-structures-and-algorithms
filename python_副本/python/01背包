@@ -1,7 +1,0 @@
-n, m = map(int, input().split())
-happiness = [0 for i in range(m + 1)]
-for i in range(n):
-    need, value = map(int, input().split())
-    for i in range(m, need - 1, -1):
-        happiness[i] = max(happiness[i], happiness[i - need] + value)
-print(happiness[-1])

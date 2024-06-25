@@ -1,9 +1,0 @@
-n = int(input())
-lst = list(map(int, input().split()))
-m = int(input())
-numb = 0
-lst.sort()
-for i in range(len(lst)):
-    if lst[i] <= m:
-        numb += 1
-print(numb)

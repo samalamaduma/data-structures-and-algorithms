@@ -1,8 +1,0 @@
-from random import random
-numb = 1
-for i in range(1000000):
-    a = random()
-    b = random()
-    if (a ** 2 + b ** 2) < 1:
-        numb += 1
-print("%.2f" % ((4 * numb) / 1000000))

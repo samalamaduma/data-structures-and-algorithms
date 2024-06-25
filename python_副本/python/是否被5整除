@@ -1,8 +1,0 @@
-a = input()
-answer = []
-for i in range(len(a)):
-    if int(a[0: i + 1], 2) % 5 == 0:
-        answer.append("1")
-    else:
-        answer.append("0")
-print("".join(answer))

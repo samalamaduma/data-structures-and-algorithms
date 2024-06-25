@@ -1,9 +1,0 @@
-str1 = input()
-list1 = list(str1)
-len1 = len(list1)
-num = 0
-for i in range(len1):
-    for j in range(i + 1, len1):
-        if list1[j] < list1[i]:
-            num += 1
-print(num)

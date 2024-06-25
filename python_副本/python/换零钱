@@ -1,6 +1,0 @@
-m, n = map(int, input().split())
-s = 100 * m + 50 * n - 8
-way = 0
-for i in range(s,0,-5):
-    way += i // 2 + 1
-print(way)
